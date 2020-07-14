@@ -3,9 +3,17 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
 
+const jobRouter = require('./routes/jobs');
 
-var app = express();
+const { connectToDb } = require('./services/db');
 
+const app = express();
+
+try {
+  connectToDb();
+} catch (error) {
+  console.log('app.js dbConnect'); 
+}
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -33,6 +41,8 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+app.use('/api/jobs', jobRouter);
 
 /// catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const {mongodb} = require('../config');
 
-const debug = require('debug')('blog-server:db');
+const debug = require('debug')('rahulbhai-server:db');
 
 const { JobModel } = require('../models/jobModel');
 
