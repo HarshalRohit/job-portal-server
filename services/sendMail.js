@@ -35,7 +35,7 @@ const sendEmail = async ({ userInfo, attachmentPath, jobInfo}) => {
 
     const message = {
         from: email.EmUser,
-        to: ['rohitharshal95@gmail.com', 'Rahulgore@live.in'],
+        to: ['rohitharshal95@gmail.com'],// 'Rahulgore@live.in'],
         subject: `Application for ${jobInfo.jobTitle} in ${jobInfo.company}` +
             ` by ${userInfo.name}`,
         html: html,
