@@ -21,10 +21,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.get('/status', (req, res) => {
-  res.status(200).end();
+  res.status(200).json({message: 'All Good!'}).end();
 });
 app.head('/status', (req, res) => {
-  res.status(200).end();
+  res.status(200).json({message: 'All Good!'}).end();
 });
 
 // Useful if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
