@@ -15,6 +15,8 @@ const {
 } = require('../services/db');
 const { JobModel } = require('../models/jobModel');
 
+const passport = require('passport');
+
 
 /* Test apply Job */
 router.post('/apply/:id', fileUpload.single('resume'), async function (req, res, next) {
@@ -47,17 +49,20 @@ router.post('/apply/:id', fileUpload.single('resume'), async function (req, res,
 });
 
 /* GET job listing. */
-router.get('/:id', async function (req, res, next) {
-  const jobId = req.params.id;
+router.get('/:id',
+  passport.authenticate('jwt', { session: false }),
+  async function (req, res, next) {
+    const jobId = req.params.id;
 
-  try {
-    const result = await dbRetrieve(jobId);
-    res.json(result)
-  } catch (err) {
-    console.log(err)
-    res.sendStatus(400);
+    try {
+      const result = await dbRetrieve(jobId);
+      res.json(result)
+    } catch (err) {
+      console.log(err)
+      res.sendStatus(400);
+    }
   }
-});
+);
 
 /* GET jobs listing. */
 router.get('/', async function (req, res, next) {

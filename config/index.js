@@ -32,5 +32,14 @@ exports.api= {
   prefix: '/api',
 };
 
+exports.loginCred = {
+  username: process.env.ADMINUSERNAME,
+  password: process.env.ADMINPASSWORD,
+  loggedIn: process.env.ADMINLOGGEDIN,
+}
+
+exports.accessToken = process.env.ACCESSTOKEN
+
+
 
 
